@@ -62,16 +62,21 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const title = taskForm['task-title'];
-    const description = taskForm['task-description'];
+    const title = taskForm['task-title'].value;
+    const description = taskForm['task-description'].value;
+
+    if(title.length > 3 && description.length > 3) {
 
     if (!editStatus) {
-        saveTask(title.value, description.value);
+        saveTask(title, description);
     }else{
-        updateTasks(id, {title: title.value, description: description.value});
+        updateTasks(id, {title: title, description: description});
 
         editStatus = false;
     }
 
     taskForm.reset();
+} else {
+    alert('Debes escribir algo bb');
+}
 });
