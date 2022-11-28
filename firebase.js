@@ -62,6 +62,7 @@ export const saveImage = file => {
       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         //document.querySelector('#progress').value = 'Fin!'
+        document.querySelector('#image').src = downloadURL;
         console.log('File available at', downloadURL);
 
       });
